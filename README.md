@@ -20,12 +20,17 @@ Project Structure
 
 Password-leak-risk-analyzer-main/
 ├── app.py                  # Local Flask web server and request routing
+
 ├── password_analyzer.py    # Offline screening, entropy math, heuristics, and risk engine
+
 ├── common_passwords.txt    # Local list of known weak/leaked passwords
+
 ├── templates/
 │   └── index.html          # Minimalist HTML interface and visibility toggle
+
 ├── static/
 │   └── style.css           # Clean, distraction-free stylesheet
+
 └── README.md               # Project documentation
 
 
