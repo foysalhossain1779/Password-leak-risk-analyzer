@@ -41,7 +41,7 @@ Quick Start (Windows)
    python -m pip install flask
    
 3. Start the local server:
-   --powershell
-   python app.py
+    3.1 powershell
+    3.2 python app.py
    
-4. Open in your browser: Hold Ctrl and click http://127.0.0.1:5000 in the terminal.
+5. Open in your browser: Hold Ctrl and click http://127.0.0.1:5000 in the terminal.
