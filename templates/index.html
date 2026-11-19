@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Risk Analyzer</title>
+    <!-- Link the local minimalist stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Centered minimalist container -->
+    <main class="container">
+        <div class="badge">
+            <span class="dot"></span> 100% Offline • Local Only
+        </div>
+
+        <h1>Password Risk Analyzer</h1>
+        <p class="subtitle">Evaluate exposure and guessability without sending data over the network.</p>
+
+        <!-- Password submission form -->
+        <form method="POST" action="/" class="analyzer-form">
+            <div class="input-wrapper">
+                <input 
+                    type="password" 
+                    id="password-input"
+                    class="password-input"
+                    name="password" 
+                    placeholder="Enter a password to evaluate..." 
+                    autocomplete="off" 
+                    required
+                >
+                <button type="button" id="toggle-password" class="toggle-btn">Show</button>
+            </div>
+            <button type="submit" class="submit-btn">Analyze</button>
+        </form>
+
+        <!-- Minimalist Strength Card & Actionable Fixes -->
+        {% if result %}
+            <section class="results-section">
+                <!-- Overall Strength Verdict Card -->
+                <div class="risk-card {{ result.risk.css_class }}">
+                    <div class="risk-header">
+                        <span class="risk-title">Password Strength</span>
+                        <span class="risk-pill">{{ result.risk.level }}</span>
+                    </div>
+
+                    <!-- Visual Strength Meter Bar -->
+                    <div class="meter-track">
+                        <div class="meter-fill" style="width: {{ result.risk.percent }}%;"></div>
+                    </div>
+
+                    <p class="risk-summary">{{ result.risk.summary }}</p>
+                </div>
+
+                <!-- Key Security Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-label">Entropy</span>
+                        <span class="metric-value">{{ result.entropy }} bits</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Length</span>
+                        <span class="metric-value">{{ result.length }} chars</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Char Sets</span>
+                        <span class="metric-value">{{ result.char_types }} / 4</span>
+                    </div>
+                </div>
+
+                <!-- Plain-English Recommended Fixes -->
+                <div class="detail-box">
+                    <div class="section-label">Recommended Fixes</div>
+                    <ul class="detail-list">
+                        {% for tip in result.suggestions %}
+                            <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Detected Guessability Flags -->
+                {% if result.heuristics %}
+                    <div class="detail-box">
+                        <div class="section-label">Detected Weaknesses</div>
+                        <ul class="detail-list">
+                            {% for flag in result.heuristics %}
+                                <li>{{ flag }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </section>
+        {% endif %}
+    </main>
+
+    <!-- Toggle password visibility locally in the browser -->
+    <script>
+        const passwordInput = document.getElementById("password-input");
+        const toggleButton = document.getElementById("toggle-password");
+
+        toggleButton.addEventListener("click", () => {
+            const isHidden = passwordInput.type === "password";
+            passwordInput.type = isHidden ? "text" : "password";
+            toggleButton.textContent = isHidden ? "Hide" : "Show";
+        });
+    </script>
+</body>
+</html>
