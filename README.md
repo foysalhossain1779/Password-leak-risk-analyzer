@@ -25,11 +25,9 @@ Password-leak-risk-analyzer-main/
 
 ├── common_passwords.txt    # Local list of known weak/leaked passwords
 
-├── templates/
-   └── index.html          # Minimalist HTML interface and visibility toggle
+├── templates/ index.html          # Minimalist HTML interface and visibility toggle
 
-├── static/
-   └── style.css           # Clean, distraction-free stylesheet
+├── static/ style.css           # Clean, distraction-free stylesheet
 
 └── README.md               # Project documentation
 
