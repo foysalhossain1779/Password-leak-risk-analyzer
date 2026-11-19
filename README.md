@@ -18,7 +18,8 @@ Features
 Project Structure
 
 
-Password-leak-risk-analyzer-main/
+Password-leak-risk-analyzer-main
+
 ├── app.py                  # Local Flask web server and request routing
 
 ├── password_analyzer.py    # Offline screening, entropy math, heuristics, and risk engine
