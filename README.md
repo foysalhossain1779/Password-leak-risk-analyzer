@@ -37,11 +37,13 @@ Quick Start (Windows)
 
 1. Clone or download the repository and open the folder in VS Code.
 2. Install Flask (the only external dependency):
-   --powershell
-   python -m pip install flask
+     powershell
    
-3. Start the local server:
-    3.1 powershell
-    3.2 python app.py
+     python -m pip install flask
    
-5. Open in your browser: Hold Ctrl and click http://127.0.0.1:5000 in the terminal.
+4. Start the local server:
+     powershell
+   
+     python app.py
+   
+6. Open in your browser: Hold Ctrl and click http://127.0.0.1:5000 in the terminal.
