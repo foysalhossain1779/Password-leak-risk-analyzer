@@ -20,28 +20,28 @@ Project Structure
 
 Password-leak-risk-analyzer-main
 
-├── app.py                  # Local Flask web server and request routing
+├── app.py                         # Local Flask web server and request routing
 
-├── password_analyzer.py    # Offline screening, entropy math, heuristics, and risk engine
+├── password_analyzer.py           # Offline screening, entropy math, heuristics, and risk engine
 
-├── common_passwords.txt    # Local list of known weak/leaked passwords
+├── common_passwords.txt           # Local list of known weak/leaked passwords
 
 ├── templates/ index.html          # Minimalist HTML interface and visibility toggle
 
-├── static/ style.css           # Clean, distraction-free stylesheet
+├── static/ style.css              # Clean, distraction-free stylesheet
 
-└── README.md               # Project documentation
+└── README.md                      # Project documentation
 
 
 Quick Start (Windows)
 
 1. Clone or download the repository and open the folder in VS Code.
 2. Install Flask (the only external dependency):
-   `powershell
+   --powershell
    python -m pip install flask
    
 3. Start the local server:
-   powershell
+   --powershell
    python app.py
    
 4. Open in your browser: Hold Ctrl and click http://127.0.0.1:5000 in the terminal.
